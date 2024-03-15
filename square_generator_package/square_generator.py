@@ -1,14 +1,17 @@
 import math
+from abc import ABC, abstractmethod
 
-
-class SquareGenerator:
+class SquareGenerator(ABC):
+    @abstractmethod
     def generate_squares(self, start, end):
+        pass
 
+class CubicGenerator(SquareGenerator):
+    def generate_squares(self, start, end):
         if end < start:
             raise ValueError("End of range cannot be less than start of range.")
-        squares = []
-        for num in range(start, end + 1):
-            squares.append(num ** 2)
+
+        squares = [num ** 2 for num in range(start, end + 1)]
         return squares
 
 
